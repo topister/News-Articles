@@ -1,0 +1,22 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustered News Articles</title>
+</head>
+<body>
+    <h1>Clustered News Articles</h1>
+    
+    {% for cluster in articles|groupby('cluster') %}
+        <h2>Cluster {{ cluster.grouper }}</h2>
+        <ul>
+            {% for article in cluster.list %}
+                <li><a href="{{ article.link }}" target="_blank">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
